@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "include": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.d.ts",
+    "./vue3JestHack.js"
+  ]
+}
