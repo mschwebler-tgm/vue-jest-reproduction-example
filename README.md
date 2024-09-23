@@ -10,11 +10,24 @@ npm run test
 You should see an error:
 
 ```
-    [@vue/compiler-sfc] No fs option provided to `compileScript` in non-Node environment. File system access is required for resolving imported types.
+[@vue/compiler-sfc] No fs option provided to `compileScript` in non-Node environment. File system access is required for resolving imported types.
 ```
 
-## Solution
+### Files used to reproduce the problem:
+- `src/components/Example.vue`
+- `src/components/Example.spec.ts`
+- `src/components/ExampleProps.ts`
 
-See `vue3JestHack.js` file.
+In `Example.vue` comment out the defineProps and use the type for a normal variable to see this issue only occurs when using types with Vue generics: 
+```vue
+<script setup lang="ts">
+import type {ExampleProps} from "@/components/ExampleProps";
 
-In `jest.config.js` uncomment the transform option to use vue3JestHack, and run test again. You should see tests passing
+const data = defineProps<ExampleProps>();
+
+// Uncomment the following line to see that types work if not used in defineProps()
+// const data: ExampleProps = {
+//   text: 'Hello World'
+}
+</script>
+```

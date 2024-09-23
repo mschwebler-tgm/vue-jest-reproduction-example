@@ -1,9 +1,7 @@
-module.exports = {
+export default {
   moduleFileExtensions: ["js", "jsx", "json", "vue", "ts", "tsx"],
   transform: {
     "^.+\\.vue$": "@vue/vue3-jest",
-    // Uncomment to see tests working
-    // "^.+\\.vue$": "./vue3JestHack.js",
     "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: `./tsconfig.node.json` }],
   },
   testEnvironment: "jsdom",
